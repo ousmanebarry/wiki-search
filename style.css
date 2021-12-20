@@ -44,6 +44,6 @@ p {
 	color: #006621;
 }
 
-.first-a {
-	color: #006621;
+.first-a:active {
+	color: red;
 }
