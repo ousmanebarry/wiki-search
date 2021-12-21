@@ -47,3 +47,9 @@ p {
 .first-a:active {
 	color: red;
 }
+
+.red-light {
+	color: red;
+	font-weight: 300;
+	text-align: center;
+}

@@ -43,8 +43,10 @@ function fetchData(url) {
 			}
 
 			showResults.innerHTML = code;
+			return search;
 		})
 		.catch((error) => {
+			showResults.innerHTML = `<div><h1 class="red-light">There was an error fetching the data, please try again.</h1></div>`;
 			return error;
 		});
 }
