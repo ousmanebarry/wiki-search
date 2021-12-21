@@ -57,6 +57,36 @@ p {
 	visibility: hidden;
 }
 
+@media screen and (max-width: 695px) {
+	section > div {
+		width: 500px;
+	}
+
+	.js-input {
+		width: 500px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	section > div {
+		width: 355px;
+	}
+
+	.js-input {
+		width: 355px;
+	}
+}
+
+@media screen and (max-width: 370px) {
+	section > div {
+		width: 290px;
+	}
+
+	.js-input {
+		width: 290px;
+	}
+}
+
 /* This part of the code for the loading animation was not written by me */
 
 .sk-circle {
