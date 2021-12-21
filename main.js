@@ -1,8 +1,13 @@
 const showResults = document.getElementById("results-search");
 const formSubmit = document.getElementById("form-js");
 const inputBox = document.getElementById("input-js");
+const loadingIndicator = document.getElementById("circle-sk");
 
-function fetchData(url) {
+function fetchAndDisplay(url) {
+	showResults.innerHTML = "";
+	loadingIndicator.classList.add("sk-circle");
+	loadingIndicator.classList.remove("hidden");
+
 	fetch(url)
 		.then((response) => {
 			return response.json();
@@ -52,6 +57,10 @@ function fetchData(url) {
 		.catch((error) => {
 			showResults.innerHTML = `<div><h1 class="red-light">There was an error fetching the data, please try again.</h1></div>`;
 			return error;
+		})
+		.finally(() => {
+			loadingIndicator.classList.add("hidden");
+			loadingIndicator.classList.remove("sk-circle");
 		});
 }
 
@@ -59,7 +68,7 @@ function handleSubmit(e) {
 	e.preventDefault();
 	const searchTerm = inputBox.value.replace(/ /g, "%20");
 	const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${searchTerm}&format=json&srlimit=30`;
-	fetchData(url);
+	fetchAndDisplay(url);
 }
 
 formSubmit.addEventListener("submit", handleSubmit);
