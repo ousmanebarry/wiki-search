@@ -11,10 +11,10 @@ function fetchData(url) {
 			return data.query.search;
 		})
 		.then((search) => {
-			let code = "";
+			let code = new String();
+
 			if (search.length == 0) {
-				code = `<div><h1 class="red-light">"${inputBox.value}" could not be found. Please enter a valid search term.</h1></div>`;
-				console.log("we got in here");
+				code = `<div><h1 class="red-light">No results were found for "${inputBox.value}". Please enter a valid search term.</h1></div>`;
 			} else {
 				for (i = 0; i < search.length; i++) {
 					code += `
@@ -58,7 +58,7 @@ function fetchData(url) {
 function handleSubmit(e) {
 	e.preventDefault();
 	const searchTerm = inputBox.value.replace(/ /g, "%20");
-	const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${searchTerm}&format=json`;
+	const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${searchTerm}&format=json&srlimit=30`;
 	fetchData(url);
 }
 
