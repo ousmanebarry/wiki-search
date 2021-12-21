@@ -2,7 +2,7 @@
 
 ## Search wikipedia (work in progress)
 
-Live demo : (work in progress)
+Live demo : https://wiki-search-web.netlify.app (work in progress)
 
 API credit : https://www.mediawiki.org/wiki/API:Search
 
