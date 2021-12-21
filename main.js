@@ -12,9 +12,12 @@ function fetchData(url) {
 		})
 		.then((search) => {
 			let code = "";
-
-			for (i = 0; i < search.length; i++) {
-				code += `
+			if (search.length == 0) {
+				code = `<div><h1 class="red-light">"${inputBox.value}" could not be found. Please enter a valid search term.</h1></div>`;
+				console.log("we got in here");
+			} else {
+				for (i = 0; i < search.length; i++) {
+					code += `
                 <div>
                 <h1>
 					<a
@@ -40,6 +43,7 @@ function fetchData(url) {
 					${search[i].snippet}
 				</p>
                 </div>`;
+				}
 			}
 
 			showResults.innerHTML = code;
