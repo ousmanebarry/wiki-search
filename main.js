@@ -1,8 +1,4 @@
-import {
-	displaySearches,
-	displayNoResults,
-	displayFetchErr,
-} from "./createHtml.js";
+import { displaySearches, displayErr } from "./createHtml.js";
 
 const showResults = document.getElementById("results-search");
 const formSubmit = document.getElementById("form-js");
@@ -23,7 +19,7 @@ function fetchAndDisplay(url) {
 		})
 		.then((search) => {
 			if (search.length == 0) {
-				displayNoResults(inputBox.value, showResults);
+				displayErr(1, inputBox.value, showResults);
 			} else {
 				for (let i = 0; i < search.length; i++) {
 					displaySearches(search[i], showResults);
@@ -33,7 +29,7 @@ function fetchAndDisplay(url) {
 			return search;
 		})
 		.catch((error) => {
-			displayFetchErr(showResults);
+			displayErr(0, inputBox.value, showResults);
 			return error;
 		})
 		.finally(() => {

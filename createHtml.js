@@ -56,7 +56,7 @@ export function displaySearches(search, showResults) {
 	showResults.appendChild(newDiv);
 }
 
-export function displayNoResults(value, showResults) {
+export function displayErr(errType, value, showResults) {
 	const newDiv = document.createElement("div");
 	const h1 = document.createElement("h1");
 	const att = document.createAttribute("class");
@@ -64,29 +64,19 @@ export function displayNoResults(value, showResults) {
 	att.value = "red-light";
 	h1.setAttributeNode(att);
 
-	h1.appendChild(
-		document.createTextNode(
-			`No results were found for "${value}". Please enter a valid search term.`
-		)
-	);
-
-	newDiv.appendChild(h1);
-	showResults.appendChild(newDiv);
-}
-
-export function displayFetchErr(showResults) {
-	const newDiv = document.createElement("div");
-	const h1 = document.createElement("h1");
-	const att = document.createAttribute("class");
-
-	att.value = "red-light";
-	h1.setAttributeNode(att);
-
-	h1.appendChild(
-		document.createTextNode(
-			"There was an error fetching the data, please try again."
-		)
-	);
+	if (Boolean(errType)) {
+		h1.appendChild(
+			document.createTextNode(
+				`No results were found for "${value}". Please enter a valid search term.`
+			)
+		);
+	} else {
+		h1.appendChild(
+			document.createTextNode(
+				"There was an error fetching the data, please try again."
+			)
+		);
+	}
 
 	newDiv.appendChild(h1);
 	showResults.appendChild(newDiv);
