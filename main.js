@@ -1,4 +1,4 @@
-import { displaySearches, displayErr } from "./createHtml.js";
+import { displaySearches, displayErr, pagesDisplay } from "./displayer.js";
 
 const showResults = document.getElementById("results-search");
 const formSubmit = document.getElementById("form-js");
@@ -25,11 +25,11 @@ function fetchAndDisplay(url) {
 					displaySearches(search[i], showResults);
 				}
 			}
-
 			return search;
 		})
 		.catch((error) => {
 			displayErr(0, inputBox.value, showResults);
+			console.error(error);
 			return error;
 		})
 		.finally(() => {
