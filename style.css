@@ -57,6 +57,45 @@ p {
 	visibility: hidden;
 }
 
+/* Changes start */
+
+.pages {
+	padding: 28.8px 0 28.8px 0;
+}
+
+.pages > ul > li > a {
+	font-size: large;
+	text-decoration: none;
+}
+
+.pages > ul > li > a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.pages > ul > li > a:visited {
+	color: inherit;
+}
+
+.active {
+	text-decoration: underline;
+	color: black;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: inline-block;
+	color: #4285f4;
+	padding: 0 10px;
+}
+
+/* Changes end */
+
 @media screen and (max-width: 695px) {
 	section > div {
 		width: 500px;
