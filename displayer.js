@@ -31,7 +31,7 @@ export function displaySearches(search, showResults) {
 	p1.classList.add("link");
 	p2.classList.add("paragraph");
 
-	h1.appendChild(a1);		
+	h1.appendChild(a1);
 	p1.appendChild(a2);
 	p2.innerHTML = `${search.snippet}`;
 
@@ -40,8 +40,23 @@ export function displaySearches(search, showResults) {
 	showResults.appendChild(newDiv);
 }
 
-export function pagesDisplay() {
-	return true;
+export function pagesDisplay(num, pagesList) {
+	pagesList.innerHTML = "";
+	if (num !== 1) {
+		const ul = document.createElement("ul");
+
+		for (let i = 0; i < num; i++) {
+			const li = document.createElement("li");
+			const a = document.createElement("a");
+
+			a.textContent = i + 1;
+			a.setAttribute("id", `${i + 1}`);
+			li.appendChild(a);
+			ul.appendChild(li);
+		}
+
+		pagesList.appendChild(ul);
+	}
 }
 
 export function displayErr(errType, value, showResults) {
