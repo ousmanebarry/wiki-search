@@ -1,19 +1,20 @@
-import { displaySearches, displayErr, pagesDisplay } from "./displayer.js";
-import { pagesNumber, pagesEventListeners } from "./pages.js";
+import { displaySearches, displayErr, pagesDisplay } from './displayer.js';
+import { pagesNumber, pagesEventListeners } from './pages.js';
 
-const inputBox = document.getElementById("input-js");
-const formSubmit = document.getElementById("form-js");
-const pagesList = document.getElementById("pages-display");
-const showResults = document.getElementById("results-search");
-const loadingIndicator = document.getElementById("circle-sk");
+const inputBox = document.getElementById('input-js');
+const formSubmit = document.getElementById('form-js');
+const pagesList = document.getElementById('pages-display');
+const showResults = document.getElementById('results-search');
+const loadingIndicator = document.getElementById('circle-sk');
 
-inputBox.value = "";
-pagesList.classList.add("hidden");
+inputBox.value = '';
+pagesList.classList.add('hidden');
 
 function fetchAndDisplay(url, start = 0, end = 25) {
-	showResults.innerHTML = "";
-	loadingIndicator.classList.add("sk-circle");
-	loadingIndicator.classList.remove("hidden");
+	showResults.innerHTML = '';
+	pagesList.innerHTML = '';
+	loadingIndicator.classList.add('sk-circle');
+	loadingIndicator.classList.remove('hidden');
 
 	fetch(url)
 		.then((response) => {
@@ -27,14 +28,14 @@ function fetchAndDisplay(url, start = 0, end = 25) {
 				displayErr(1, inputBox.value, showResults);
 			} else {
 				localStorage.clear();
-				localStorage.setItem("search", JSON.stringify(search));
+				localStorage.setItem('search', JSON.stringify(search));
 
 				for (let i = start; i < end; i++) {
 					displaySearches(search[i], showResults);
 				}
 				pagesDisplay(pagesNumber(search), pagesList);
 				pagesEventListeners();
-				document.getElementById(`${end / 25}`).classList.add("active");
+				document.getElementById(`${end / 25}`).classList.add('active');
 			}
 			return search;
 		})
@@ -44,9 +45,9 @@ function fetchAndDisplay(url, start = 0, end = 25) {
 			return error;
 		})
 		.finally(() => {
-			loadingIndicator.classList.add("hidden");
-			loadingIndicator.classList.remove("sk-circle");
-			pagesList.classList.remove("hidden");
+			loadingIndicator.classList.add('hidden');
+			loadingIndicator.classList.remove('sk-circle');
+			pagesList.classList.remove('hidden');
 		});
 }
 
@@ -58,12 +59,12 @@ function handleSubmit(e) {
 }
 
 export function localStorageDisplay(e) {
-	showResults.innerHTML = "";
-	loadingIndicator.classList.add("sk-circle");
-	loadingIndicator.classList.remove("hidden");
+	showResults.innerHTML = '';
+	loadingIndicator.classList.add('sk-circle');
+	loadingIndicator.classList.remove('hidden');
 
 	const num = parseInt(e.target.id);
-	const localData = JSON.parse(localStorage.getItem("search"));
+	const localData = JSON.parse(localStorage.getItem('search'));
 
 	window.scrollTo(0, 0);
 
@@ -73,11 +74,11 @@ export function localStorageDisplay(e) {
 
 	pagesDisplay(pagesNumber(localData), pagesList);
 	pagesEventListeners();
-	document.getElementById(`${(num * 25) / 25}`).classList.add("active");
+	document.getElementById(`${(num * 25) / 25}`).classList.add('active');
 
-	loadingIndicator.classList.add("hidden");
-	loadingIndicator.classList.remove("sk-circle");
-	pagesList.classList.remove("hidden");
+	loadingIndicator.classList.add('hidden');
+	loadingIndicator.classList.remove('sk-circle');
+	pagesList.classList.remove('hidden');
 }
 
-formSubmit.addEventListener("submit", handleSubmit);
+formSubmit.addEventListener('submit', handleSubmit);
