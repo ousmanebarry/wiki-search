@@ -65,11 +65,19 @@ export function localStorageDisplay(e) {
 
 	const num = parseInt(e.target.id);
 	const localData = JSON.parse(localStorage.getItem('search'));
+	const ulPage = document.getElementById('test');
+	const lastPage = ulPage.childElementCount;
 
 	window.scrollTo(0, 0);
 
-	for (let i = num * 25 - 25; i < num * 25; i++) {
-		displaySearches(localData[i], showResults);
+	if (num === lastPage) {
+		for (let i = num * 25 - 25; i < localData.length; i++) {
+			displaySearches(localData[i], showResults);
+		}
+	} else {
+		for (let i = num * 25 - 25; i < num * 25; i++) {
+			displaySearches(localData[i], showResults);
+		}
 	}
 
 	pagesDisplay(pagesNumber(localData), pagesList);
