@@ -1,6 +1,6 @@
 # wiki-search 
 
-## Search wikipedia (work in progress)
+## Search wikipedia 
 
 Live demo : https://wiki-search-web.netlify.app 
 
