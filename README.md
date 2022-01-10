@@ -1,8 +1,8 @@
 # wiki-search 
 
-## Search wikipedia (work in progress)
+## Search wikipedia 
 
-Live demo : https://wiki-search-web.netlify.app (work in progress)
+Live demo : https://wiki-search-web.netlify.app 
 
 API credit : https://www.mediawiki.org/wiki/API:Search
 
