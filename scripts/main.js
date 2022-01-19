@@ -55,7 +55,7 @@ function handleSubmit(e) {
 	e.preventDefault();
 	const searchTerm = encodeURIComponent(inputBox.value);
 	const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${searchTerm}&format=json&srlimit=200`;
-	fetchAndDisplay(url);
+	return fetchAndDisplay(url);
 }
 
 export function localStorageDisplay(e) {
@@ -64,7 +64,8 @@ export function localStorageDisplay(e) {
 	loadingIndicator.classList.remove('hidden');
 
 	const num = parseInt(e.target.id);
-	const localData = JSON.parse(localStorage.getItem('search'));
+	const localData =
+		JSON.parse(localStorage.getItem('search')) || handleSubmit(e);
 	const ulPage = document.getElementById('test');
 	const lastPage = ulPage.childElementCount;
 
